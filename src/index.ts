@@ -3,7 +3,7 @@ import express, { type Request, type Response, type NextFunction } from 'express
 const app = express();
 
 // Environment variables with proper typing
-const PORT = Number(process.env.PORT) || 3000;  // Convert PORT to number
+const PORT = Number(process.env.PORT) || 5000;  // Convert PORT to number
 const HOST = process.env.HOST || '0.0.0.0';     // Default to all network interfaces
 
 // Server shutdown timeout in ms
