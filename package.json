@@ -11,12 +11,17 @@
   "license": "ISC",
   "packageManager": "pnpm@10.18.1",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.30.1",
+    "winston": "^3.18.3",
+    "winston-daily-rotate-file": "^5.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.5",
     "@total-typescript/tsconfig": "^1.0.4",
     "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
     "tsdown": "^0.15.6",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3"
