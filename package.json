@@ -6,14 +6,15 @@
     "start": "node dist/index.js",
     "dev": "tsx watch src/index.ts",
     "build": "tsdown",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit && biome check --write"
   },
   "license": "ISC",
-  "packageManager": "pnpm@10.18.0",
+  "packageManager": "pnpm@10.18.1",
   "dependencies": {
     "express": "^5.1.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.2.5",
     "@total-typescript/tsconfig": "^1.0.4",
     "@types/express": "^5.0.3",
     "tsdown": "^0.15.6",

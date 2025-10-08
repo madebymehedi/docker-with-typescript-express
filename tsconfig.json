@@ -1,6 +1,6 @@
 {
-    "extends": "@total-typescript/tsconfig/bundler/no-dom/app",
-    "compilerOptions": {
-        "outDir": "dist"
-    }
+  "extends": "@total-typescript/tsconfig/bundler/no-dom/app",
+  "compilerOptions": {
+    "outDir": "dist"
+  }
 }
