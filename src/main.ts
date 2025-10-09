@@ -52,7 +52,7 @@ app.get("/error", (_req: Request, _res: Response, next: NextFunction) => {
 app.use("/logs", LogsRoutes)
 
 // 404 Route Handler - Must be after all other routes
-app.all("*", (_req: Request, res: Response) => {
+app.use((_req: Request, res: Response) => {
   res.status(404).send(`
     <html>
       <head>
