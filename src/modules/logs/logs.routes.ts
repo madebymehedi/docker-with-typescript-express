@@ -5,18 +5,14 @@ const router = express.Router()
 
 /**
  * Error Logs Routes
- * GET /api/logs/errors - Get all error logs
- * GET /api/logs/errors/:id - Get specific error log
  */
 router.get("/errors", logsController.getAllErrorLogs)
-router.get("/errors/:id", logsController.getSpecificErrorLog)
+router.get("/errors/:filename", logsController.getSpecificErrorLog)
 
 /**
  * Success Logs Routes
- * GET /api/logs/successes - Get all success logs
- * GET /api/logs/successes/:id - Get specific success log
  */
 router.get("/successes", logsController.getAllSuccessLogs)
-router.get("/successes/:id", logsController.getSpecificSuccessLog)
+router.get("/successes/:filename", logsController.getSpecificSuccessLog)
 
 export const LogsRoutes = router

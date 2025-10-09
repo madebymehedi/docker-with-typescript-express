@@ -62,8 +62,8 @@ const getAllSuccessLogs = async (_req: Request, res: Response) => {
   }
 }
 
-const getSpecificErrorLog = async (req: Request<{ id: string }>, res: Response) => {
-  const logfile = req.params.id
+const getSpecificErrorLog = async (req: Request<{ filename: string }>, res: Response) => {
+  const logfile = req.params.filename
   if (!logfile) {
     return res.status(400).send(`
       <html>
@@ -131,8 +131,8 @@ const getSpecificErrorLog = async (req: Request<{ id: string }>, res: Response) 
   }
 }
 
-const getSpecificSuccessLog = async (req: Request<{ id: string }>, res: Response) => {
-  const logfile = req.params.id
+const getSpecificSuccessLog = async (req: Request<{ filename: string }>, res: Response) => {
+  const logfile = req.params.filename
   if (!logfile) {
     return res.status(400).send(`
       <html>
