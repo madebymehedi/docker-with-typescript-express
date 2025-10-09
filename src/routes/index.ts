@@ -9,6 +9,8 @@ const router = Router()
 
 const moduleRoutes: TModuleRoutes[] = []
 
-moduleRoutes.forEach((route) => { router.use(route.path, route.route) })
+moduleRoutes.forEach((route) => {
+  router.use(route.path, route.route)
+})
 
 export default router
