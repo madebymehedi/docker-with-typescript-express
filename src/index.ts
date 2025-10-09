@@ -1,3 +1,4 @@
+import { tryCatchSync } from "./helpers/try-catch"
 import { app, setReady } from "./main"
 
 const PORT = Number(process.env.PORT) || 5000
@@ -6,7 +7,7 @@ const SHUTDOWN_TIMEOUT = parseInt(process.env.SHUTDOWN_TIMEOUT || "5000", 10)
 
 let server: ReturnType<typeof app.listen> | undefined
 
-function gracefulShutdown(signal: string) {
+const gracefulShutdown = (signal: string) => {
   console.log(`[${new Date().toISOString()}] Received ${signal}. Shutting down gracefully...`)
   setReady(false)
 
@@ -38,18 +39,25 @@ process.on("uncaughtException", (err) => {
 })
 
 // Server startup
-try {
-  server = app.listen(PORT, HOST, () => {
-    console.log(`[${new Date().toISOString()}] Server running at http://${HOST}:${PORT}`)
-    console.log("Environment:", {
-      NODE_ENV: process.env.NODE_ENV,
-      PORT,
-      HOST,
-      SHUTDOWN_TIMEOUT
+const bootstrap = () => {
+  const { error } = tryCatchSync(() => {
+    server = app.listen(PORT, HOST, () => {
+      console.log(`[${new Date().toISOString()}] Server running at http://${HOST}:${PORT}`)
+      console.log("Environment:", {
+        NODE_ENV: process.env.NODE_ENV,
+        PORT,
+        HOST,
+        SHUTDOWN_TIMEOUT
+      })
+      setReady(true)
     })
-    setReady(true)
+    return server
   })
-} catch (err) {
-  console.error(`[${new Date().toISOString()}] Failed to start server:`, err)
-  process.exit(1)
+
+  if (error) {
+    console.error(`[${new Date().toISOString()}] Failed to start server:`, error)
+    process.exit(1)
+  }
 }
+
+bootstrap()
