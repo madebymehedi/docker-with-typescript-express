@@ -4,7 +4,7 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "node dist/index.js",
-    "dev": "tsx watch src/index.ts",
+    "dev": "tsx --env-file=.env.development.local --watch src/index.ts",
     "build": "tsdown",
     "check": "tsc --noEmit && biome check --write"
   },
