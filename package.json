@@ -9,7 +9,7 @@
     "check": "tsc --noEmit && biome check --write"
   },
   "license": "ISC",
-  "packageManager": "pnpm@10.18.1",
+  "packageManager": "pnpm@10.18.2",
   "dependencies": {
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
