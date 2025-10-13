@@ -1,5 +1,6 @@
 import { tryCatchSync } from "./helpers/try-catch"
 import { app, setReady } from "./main"
+import { logger } from "./shared/logger"
 
 const PORT = Number(process.env.PORT) || 5000
 const HOST = process.env.HOST || "0.0.0.0"
@@ -49,6 +50,7 @@ const bootstrap = () => {
         HOST,
         SHUTDOWN_TIMEOUT
       })
+      logger.info(`Server successfully started on ${HOST}:${PORT}`)
       setReady(true)
     })
     return server

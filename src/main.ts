@@ -1,7 +1,7 @@
 import path from "node:path"
 import express, { type Application, type NextFunction, type Request, type Response } from "express"
 import { LogsRoutes } from "./modules/logs/logs.routes"
-import { errorlogger } from "./shared/logger"
+import { errorlogger, logger } from "./shared/logger"
 
 // Initialize Express app
 const app: Application = express()
@@ -16,20 +16,24 @@ app.use(express.urlencoded({ extended: true }))
 
 // Health check endpoint
 app.get("/health", (_req: Request, res: Response) => {
+  logger.info("Health check endpoint accessed")
   res.json({ status: "OK", timestamp: new Date().toISOString() })
 })
 
 // Readiness check endpoint
 app.get("/ready", (_req: Request, res: Response) => {
   if (isReady) {
+    logger.info("Readiness check endpoint accessed - server is ready")
     res.json({ status: "Ready", timestamp: new Date().toISOString() })
   } else {
+    logger.warn("Readiness check endpoint accessed - server is not ready")
     res.status(503).json({ status: "Not Ready", timestamp: new Date().toISOString() })
   }
 })
 
 // Routes
 app.get("/", (_req: Request, res: Response) => {
+  logger.info("Home page accessed")
   res.status(200).send(`
    <html>
       <head>

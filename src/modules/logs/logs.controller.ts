@@ -2,8 +2,10 @@ import fs from "node:fs"
 import path from "node:path"
 import type { Request, Response } from "express"
 import { getLogFileNames } from "./logs.helpers"
+import { logger } from "@/shared/logger"
 
 const getAllErrorLogs = async (_req: Request, res: Response) => {
+  logger.info("Error logs page accessed")
   const errorFiles = getLogFileNames("errors")
 
   if (errorFiles.length === 0) {
@@ -33,6 +35,7 @@ const getAllErrorLogs = async (_req: Request, res: Response) => {
   }
 }
 const getAllSuccessLogs = async (_req: Request, res: Response) => {
+  logger.info("Success logs page accessed")
   const successFiles = getLogFileNames("successes")
 
   if (successFiles.length === 0) {
