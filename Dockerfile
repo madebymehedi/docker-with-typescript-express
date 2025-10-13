@@ -34,6 +34,9 @@ WORKDIR /app
 # This will install pnpm based on your "packageManager" field in package.json.
 RUN corepack enable
 
+# 🔄 Self-update pnpm to latest stable
+RUN corepack prepare pnpm@latest --activate
+
 # -------------------------------
 # 📦 Copy dependency files first
 # -------------------------------
